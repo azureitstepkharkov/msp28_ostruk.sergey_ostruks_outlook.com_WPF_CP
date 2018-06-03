@@ -1,0 +1,39 @@
+﻿<Window x:Class="Admin.Add"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Admin"
+        mc:Ignorable="d"
+        Title="Add User" Height="300" Width="300"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0">Name</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="1">Email</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="2">Password</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="3">Confirm Password</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="4">Role</TextBlock>
+
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtName"/>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtEmail"/>
+        <PasswordBox Grid.Column="1" Grid.Row="2" x:Name="txtPassword"/>
+        <PasswordBox Grid.Column="1" Grid.Row="3" x:Name="txtCPassword"/>
+        <ComboBox Grid.Column="1" Grid.Row="4" x:Name="cmbRoles"/>
+        <Button  Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" 
+                     Width="100" Height="30" x:Name="btnStart" 
+                 Click="btnStart_Click" Content="Add" />
+
+    </Grid>
+</Window>

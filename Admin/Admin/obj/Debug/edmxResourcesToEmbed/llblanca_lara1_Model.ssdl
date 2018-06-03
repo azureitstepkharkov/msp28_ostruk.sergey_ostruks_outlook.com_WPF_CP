@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище llblanca_lara1Model" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="contact_types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contact_type" Type="varchar" MaxLength="191" Nullable="false" />
+  </EntityType>
+  <EntityType Name="contacts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="migrations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="migration" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="batch" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "def.llblanca_lara1.password_resets" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="password_resets">
+    <Key>
+      <PropertyRef Name="email" />
+      <PropertyRef Name="token" />
+    </Key>
+    <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="token" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="permission_role">
+    <Key>
+      <PropertyRef Name="permission_id" />
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="permission_id" Type="int" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="permissions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="display_name" Type="varchar" MaxLength="191" />
+    <Property Name="description" Type="varchar" MaxLength="191" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="project_technology">
+    <Key>
+      <PropertyRef Name="id_project" />
+      <PropertyRef Name="id_technology" />
+    </Key>
+    <Property Name="id_project" Type="int" Nullable="false" />
+    <Property Name="id_technology" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="projects">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="description" Type="text" />
+    <Property Name="client_id" Type="int" Nullable="false" />
+    <Property Name="project_manager_id" Type="int" Nullable="false" />
+    <Property Name="status" Type="enum" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="role_user">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="display_name" Type="varchar" MaxLength="191" />
+    <Property Name="description" Type="varchar" MaxLength="191" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="task_comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="task_id" Type="int" Nullable="false" />
+    <Property Name="comment" Type="text" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="task_file">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="task_id" Type="int" Nullable="false" />
+    <Property Name="path" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="task_technology">
+    <Key>
+      <PropertyRef Name="id_task" />
+      <PropertyRef Name="id_technology" />
+    </Key>
+    <Property Name="id_task" Type="int" Nullable="false" />
+    <Property Name="id_technology" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="task_user">
+    <Key>
+      <PropertyRef Name="id_task" />
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_task" Type="int" Nullable="false" />
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="tasks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="description" Type="text" />
+    <Property Name="project_id" Type="int" Nullable="false" />
+    <Property Name="start" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="end" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="status" Type="enum" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="technologies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="191" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="technology_user">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="technology_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="technology_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="comment" Type="text" Nullable="false" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityType Name="user_contact">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="contact_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="contact_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="191" Nullable="false" />
+    <Property Name="status" Type="enum" Nullable="false" />
+    <Property Name="remember_token" Type="varchar" MaxLength="100" />
+    <Property Name="created_at" Type="timestamp" Precision="0" />
+    <Property Name="updated_at" Type="timestamp" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="Хранилище llblanca_lara1ModelContainer">
+    <EntitySet Name="contact_types" EntityType="Self.contact_types" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="contacts" EntityType="Self.contacts" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="migrations" EntityType="Self.migrations" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="permission_role" EntityType="Self.permission_role" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="permissions" EntityType="Self.permissions" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="project_technology" EntityType="Self.project_technology" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="projects" EntityType="Self.projects" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="role_user" EntityType="Self.role_user" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="task_comment" EntityType="Self.task_comment" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="task_file" EntityType="Self.task_file" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="task_technology" EntityType="Self.task_technology" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="task_user" EntityType="Self.task_user" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="tasks" EntityType="Self.tasks" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="technologies" EntityType="Self.technologies" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="technology_user" EntityType="Self.technology_user" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="user_comment" EntityType="Self.user_comment" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="user_contact" EntityType="Self.user_contact" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="llblanca_lara1" store:Type="Tables" />
+    <EntitySet Name="password_resets" EntityType="Self.password_resets" store:Type="Tables" store:Schema="llblanca_lara1">
+      <DefiningQuery>SELECT
+`password_resets`.`email`, 
+`password_resets`.`token`, 
+`password_resets`.`created_at`
+FROM `password_resets` AS `password_resets`</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
